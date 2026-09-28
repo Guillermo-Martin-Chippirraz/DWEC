@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par aleatorio</title>
+</head>
+
+<body>
+    <p>Par aleatorio: <span id="par"></span></p>
+    <script>
+        let i = parseInt(Math.random() * 100 + 1);
+        do {
+            i = parseInt(Math.random() * 100 + 1);
+            if (i % 2 == 0) document.getElementById("par").innerText = i;
+        } while (i % 2 != 0);
+    </script>
+</body>
+
+</html>

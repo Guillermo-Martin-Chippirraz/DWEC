@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartínChippirraz_PRACTICA01EVA1</title>
+</head>
+
+<body>
+    <script>
+        //TODO: Ampliar los casos por si el usuario introduce un número cuyo separador decimal es la coma (,) y no el punto (.).
+        //Creación de variables: una variable será para introducir el dato, la siguiente para parsearlo.
+        //Con la sentencia prompt se le solicita al usuario la introducción de un dato.
+        let entrada = prompt("Por favor, introduzca un número: ");
+
+        //Se emplea parseFloat para obtener el número racional de cualquier tipo, en caso de serlo, o un «NaN», en caso de no serlo.
+        let parseo = parseFloat(entrada);
+
+        //Con una estructura de control tipo while se evalúa si el resultado del parseo es un número.
+        while (isNaN(parseo)) {
+            //Mientras la variable «parseo» no sea un número, se devuelve lo siguiente.
+            //Se indica al usuario que el valor introducido no es un número y se le vuelve a solicitar la introducción de un dato.
+            entrada = prompt(`\"${entrada} no es un número. Por favor, introduzca un número.\"`);
+
+            //Se vuelve a parsear.
+            parseo = parseFloat(entrada);
+        }
+
+        //Se informa al usuario de que su entrada es, efectivamente, un número.
+        alert(`Felicidades, ${entrada} es un número.`)
+    </script>
+</body>
+
+</html>

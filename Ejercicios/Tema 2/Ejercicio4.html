@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números aleatorios</title>
+</head>
+
+<body>
+    <p>Crea una sentencia que genere un número aleatorio entre 0 y 10: <span id="apartado 1"></span></p>
+    <p>Crea una sentencia que genere un número aleatorio entre 1 y 100: <span id="apartado 2"></span></p>
+    <p>Crea una sentencia que genere un número aleatorio entre 10 y 20: <span id="apartado 3"></span></p>
+
+    <script>
+        document.getElementById("apartado 1").innerText = Math.random() * 10;
+        document.getElementById("apartado 2").innerText = Math.random() * 99 + 1;
+        document.getElementById("apartado 3").innerText = Math.random() * 10 + 10;
+    </script>
+</body>
+
+</html>

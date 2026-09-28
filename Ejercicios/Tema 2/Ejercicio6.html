@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja asteriscos</title>
+</head>
+
+<body>
+    <script>
+        var resultado = "";
+        let u = prompt("Por favor, escriba un número entero positivo: ")
+        let i = parseInt(u);
+        while (isNaN(i) || i <= 0) {
+            u = prompt(`\"${u}\" no es un número entero positivo.\nPor favor, escriba un número entero positivo: `);
+            i = parseInt(u);
+        }
+
+        let v = prompt("A continuación, escriba otro número entero positivo, por favor: ");
+        let j = parseInt(v);
+
+        while (isNaN(j) || j <= 0) {
+            v = prompt(`\"${v}\" no es un número entero positivo.\nPor favor, escriba un número entero positivo: `);
+            j = parseInt(v);
+        }
+
+        for (let r = 1; r <= i; r++) {
+            resultado += "*";
+            for (let s = 1; s <= j; s++) {
+                resultado += " hola, caracola >:) *";
+            }
+            resultado += "\n";
+        }
+
+        console.log(resultado);
+    </script>
+</body>
+
+</html>
