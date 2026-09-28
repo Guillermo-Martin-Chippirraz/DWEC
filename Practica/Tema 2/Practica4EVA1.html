@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA04EVA1</title>
+</head>
+
+<body>
+    <script>
+        //Se declaran las variables correspondientes a cada dato y se hace uso de prompt para solicitar al usuario la introducción de dichos datos
+        let nombre = prompt("Por favor, introduzca su nombre: ");
+        let apellidos = prompt("A continuación, introduzca su(s) apellido(s), por favor: ");
+        let salario = prompt("Introduzca, por favor, la cantidad en euros (€) correspondiente a su salario: ");
+        let edad = prompt("Finalmente, introduzca su edad en años, por favor: ");
+
+        //Se parsean las variables numéricas. Se usa parseFloat para datos racionales y parseInt para datos enteros.
+        let parseSalario = parseFloat(salario);
+        let parseEdad = parseInt(edad);
+
+        //Se crea una nueva variable que contendrá inicialmente el salario parseado. Tanto parseSalario como salario se dejan como variables auxiliares.
+        let nuevoSalario = parseSalario;
+
+        //En el if de la estructura de control se evalúa si la variable «parseSalario» se halla en el intervalo [1000, 2000].
+        if (parseSalario >= 1000 && parseSalario <= 2000)
+        //Se emplea un ternario para evaluar si la variable «parseEdad» es mayor que 45.
+        //En caso afirmativo, se asigna a la variable «nuevoSalario» el valor de la variable «parseSalario» multiplicada por 1.03, que equivale a un incremento del 3% del valor original.
+        //En caso negativo, se le asigna el valor de la variable «parseSalario» multiplicado por 1.1, que corresponde a un incremento del 10% del valor original.
+            nuevoSalario = (parseEdad > 45) ? parseSalario * 1.03 : parseSalario * 1.1;
+
+        //En este else if se evalua si el valor almacenado en «parseSalario» es inferior a 1000.
+        else if (parseSalario < 1000) {
+            //En el if de esta estructura de control se evalúa si la variable «parseEdad» es superior a 30.
+            if (parseEdad < 30)
+            //Se asigna el valor 1100 a «nuevoSalario»
+                nuevoSalario = 1100;
+            //En este else if se evalúa si el valor almacenado en «parseEdad» pertenece al intervalo [30, 45].
+            else if (parseEdad >= 30 && parseEdad <= 45)
+            //Se emplea el operador unario «*=» para asignar a la variable «nuevoSalario» el valor previamente almacenado multiplicado por 1.03, que se corresponde a un incremento del 3% del valor original.
+                nuevoSalario *= 1.03;
+            //Este else evalúa el resto de casos en que el valor almacenado en «parseEdad» es mayor que 45.
+            else
+            //Se emplea el operador unario «*=» para asignar a la variable «nuevoSalario» el valor previamente almacenado multiplicado por 1.15, que se corresponde a un incremento del 15% del valor original.
+                nuevoSalario *= 1.15;
+        }
+
+        //Finalmente, se introduce, usando document.write(), un párrafo en el documento a través del elemento «<p></p>»
+        //cuyo contenido lista cada dato con su valor correspondiente, almacenado en cada variable.
+        document.write(`<p>
+            Nombre: ${nombre} <br>
+            Apellidos: ${apellidos} <br>
+            Edad: ${parseEdad} <br>
+            Salario: ${nuevoSalario} €
+            </p>`)
+    </script>
+</body>
+
+</html>
