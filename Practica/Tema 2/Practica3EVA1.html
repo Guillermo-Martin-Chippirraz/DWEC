@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA03EVA1</title>
+</head>
+
+<body>
+    <!--Se abre una etiqueta style para introducir el estilo del div inline, sin necesidad de crear un documento. Ideal para esta práctica en la que sólo se requiere este div-->
+    <style>
+        /*Se posiciona el div arriba y a la derecha con los atributos top y left puestos a 0 y se fija el anche y el alto al 100% de la página. 
+        Se fija la posición*/
+        
+        div {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+        }
+    </style>
+    <script>
+        //Se crean tres variables, cada una correspondiente a una de las componentes del sistema de color RGB. Se emplea Math.random() para calcular un valor aleatorio entre 0 y 1 y 
+        // se multiplica por 255 para ampliar el rango
+        let red = Math.random() * 255;
+        let green = Math.random() * 255;
+        let blue = Math.random() * 255;
+
+        //Se escribe el div en el documento con el atributo style conteniendo la modificación en la propiedad background-color del div
+        //Se utiliza la función rgb y se introduce en cada argumento el valor de cada variable creada anteriormente.
+        document.write(`<div style=\"background-color: rgb(${red}, ${green}, ${blue})\"></div>`)
+    </script>
+</body>
+
+</html>
