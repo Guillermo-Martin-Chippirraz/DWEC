@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div id="div">
+
+    </div>
+    <script>
+        var nombre = prompt("Por favor, introduzca su nombre:");
+        var apellidos = prompt("A continuación, introduzca sus apellidos, por favor:");
+        var direccion = prompt("Introduzca su dirección, por favor:");
+        var telefono = prompt("Ahora introduzca su número de teléfono, por favor:");
+        var dni = prompt("Finalmente, introduzca su DNI", "12345678X");
+
+        // Cuadro de diálogo
+        // alert(`
+        // Nombre: ${nombre}\n
+        // Apellidos: ${apellidos}\n
+        // Dirección: ${direccion}\n
+        // Teléfono: ${telefono}\n
+        // DNI: ${dni}
+        // `);
+
+        // Método write()
+        // document.write(`
+        //     Nombre: ${nombre} <br>
+        //     Apellidos: ${apellidos} <br>
+        //     Dirección: ${direccion} <br>
+        //     Teléfono: ${telefono} <br>
+        //     DNI: ${dni}
+        // `)
+
+        // Método innerHTML()
+        // document.getElementById("div").innerHTML = `
+        // <ul>
+        //     <li>Nombre: ${nombre}</li>
+        //     <li>Apellidos: ${apellidos}</li>
+        //     <li>Dirección: ${direccion}</li>
+        //     <li>Teléfono: ${telefono}</li>
+        //     <li>DNI: ${dni}</li>
+        // </ul>
+        // `
+
+        // Consola
+        console.log(`
+        Nombre: ${nombre}\n
+        Apellidos: ${apellidos}\n
+        Dirección: ${direccion}\n
+        Teléfono: ${telefono}\n
+        DNI: ${dni}
+        `)
+    </script>
+</body>
+
+</html>
