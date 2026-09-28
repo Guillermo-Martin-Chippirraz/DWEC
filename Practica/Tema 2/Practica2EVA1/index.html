@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA02EVA1</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <script src="./js/script.js"></script>
+    <script>
+        //Se solicita al usuario el número de filas
+        let nFilas = prompt("Introduzca el número de filas");
+
+        //Se parsea el valor introducido por el usuario para evaluar si se trata de un entero
+        let parseNFilas = parseInt(nFilas);
+
+        //Se evalúa con un bucle while si parseNFilas se trata de un número entero positivo
+        while (isNaN(parseNFilas) || parseNFilas <= 0) {
+
+            //En caso de no ser un número entero positivo, se solicita al usuario la introducción de otro dato.
+            nFilas = prompt(`El número de filas debe ser un número entero positivo.
+            \n${nFilas} no es un número entero positivo.
+            \nPor favor, introduzca un número entero positivo como número de filas.`);
+
+            //Se vuelve a parsear
+            parseNFilas = parseInt(nFilas);
+        }
+
+        //Ídem para el número de columnas
+
+        let nColumnas = prompt("Introduzca el número de columnas");
+        let parseNColumnas = parseInt(nColumnas);
+
+        while (isNaN(parseNColumnas) || parseNColumnas <= 0) {
+            nColumnas = prompt(`El número de columnas debe ser un número entero positivo.
+            \n${nFilas} no es un número entero positivo.
+            \nPor favor, introduzca un número entero positivo como número de columnas.`);
+
+            parseNColumnas = parseInt(nColumnas);
+        }
+
+        tabla(parseNFilas, parseNColumnas);
+    </script>
+</body>
+
+</html>
