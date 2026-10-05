@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartínChippirraz_PRACTICA06EVA1</title>
+</head>
+
+<body>
+    <script>
+        //Creo una variable resultado que parseará a entero el valor aleatorio entre 1 y 1000
+        let resultado = parseInt(Math.random() * 1000 + 1);
+        //Creo una segunda variable que almacena a través de un prompt la respuesta del usuario
+        let respuesta = prompt("Adivina el número. El número está entre 1 y 1000");
+
+        //Creo una variable de iteración
+        let i = 0;
+
+        //Inicio un bucle do-while que contendrá la mayor parte de la lógica
+        do {
+            //Al inicio de cada iteración, la variable de iteración incrementa su valor una vez
+            i++;
+            //Se imprime el número de intento como un título h2 en pantalla
+            document.write(`<h2>Intento ${i}</h2>`)
+                //El if comprueba si la respuesta del usuario no es un número
+            if (isNaN(respuesta)) {
+                //En caso positivo, se completa el intento y se imprime por pantalla un mensaje de error.
+                document.write(`${respuesta} no es un número.`);
+                //Se solicita al usuario que introduzca un número
+                respuesta = prompt("Por favor, introduce un número.");
+            } else {
+                //En caso negativo, se inicializa la siguiente estructura de control
+                //Se comprueba en este if si la respuesta del usuario coincide con el resultado calculado
+                if (respuesta == resultado) {
+                    //En caso positivo, se imprime por pantalla que ha sido un acierto
+                    document.write("<p>¡Has acertado!");
+
+                    //En el else if siguiente, se evalúa si la respuesta es mayor al resultado
+                } else if (respuesta > resultado) {
+                    //En caso afirmativo, se imprime por pantalla la distancia entre ambos valores
+                    document.write(`<p>Te has pasado ${respuesta - resultado}</p>`);
+                    //Se solicita al usuario un nuevo intento
+                    respuesta = prompt("El número es menor. Vuelve a intentarlo");
+                } else {
+                    //En cualquier otro caso, sólo queda que la respuesta sea inferior al resultado, por tanto, se imprime por pantalla la distancia entre ambos valores
+                    document.write(`<p>Te has pasado ${resultado - respuesta}</p>`);
+                    //Se solicita al usuario un nuevo intento
+                    respuesta = prompt("El número es mayor. Vuelve a intentarlo");
+                }
+            }
+
+            //En la condición del while se comprueba si el iterador es menor que 3 y si la respuesta es diferente al resultado. En caso afirmativo, se inicia una nueva iteración del bucle
+        } while (i < 3 && respuesta != resultado);
+
+        //Finalmente, al salir del bucle, se indica por un cuadro de diálogo al usuario el número de intentos usados y que el juego ha terminado
+        confirm(`El juego ha terminado. Ha usado un total de ${i} intentos.`);
+
+        //Una vez cerrado el cuadro de diálogo, se imprimen los resultados en pantalla
+    </script>
+</body>
+
+</html>

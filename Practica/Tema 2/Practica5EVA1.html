@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA05EVA1</title>
+</head>
+
+<body>
+    <!--Se abre una etiqueta style para introducir el estilo del div inline, sin necesidad de crear un documento. Ideal para esta práctica en la que sólo se requiere este div-->
+    <style>
+        /*Se fija la posición del div y se le da un tamaño fijo de 50x50 px*/
+        
+        div {
+            width: 50px;
+            height: 50px;
+            position: fixed;
+        }
+    </style>
+    <script>
+        //Se abre un bucle for para imprimir los 2000 cuadros
+        //Esta vez se declararán y asignarán las variables localmente en el bucle, para así poder cambiar el valor cada vez.
+        //Esto también puede hacerse declarándose globalmente fuera y asignándose dentro.
+        for (let i = 0; i < 2000; i++) {
+            //Se crean tres variables, cada una correspondiente a una de las componentes del sistema de color RGB. Se emplea Math.random() para calcular un valor aleatorio entre 0 y 1 y 
+            // se multiplica por 255 para ampliar el rango
+            let red = Math.random() * 255;
+            let green = Math.random() * 255;
+            let blue = Math.random() * 255;
+
+            //Se crean otras dos variables, la primera indica la posición desde el marco superior de la ventana,
+            // mientras que la segunda indica la posición desde el cuadro izquierdo. Se multiplica por 100 para obtener un porcentaje.
+            let top = Math.random() * 100;
+            let left = Math.random() * 100;
+            //Se escribe el div en el documento con el atributo style conteniendo la modificación en la propiedad background-color del div
+            //Se utiliza la función rgb y se introduce en cada argumento el valor de cada variable creada anteriormente.
+            document.write(`<div style=\"background-color: rgb(${red}, ${green}, ${blue}); top: ${top}%; left: ${left}%;\"></div>`)
+        }
+    </script>
+</body>
+
+</html>
