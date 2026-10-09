@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+</head>
+
+<body>
+    <script>
+        let regex = /^[a-zA-Z0-9]$+/;
+
+        let login = prompt("Por favor, introduzca su login: ");
+
+        while (!regex.test(login)) {
+            login = prompt("Incorrecto: El login sólo puede contener números y letras" +
+                "\nPor favor, introduzca su login: ");
+        }
+
+        confirm("Login correcto");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14</title>
+</head>
+
+<body>
+    <script>
+        let regex = /^[KLXYZ0-9][0-9]{7}[A-HJ-N-TV-Z]$/
+        let dni = prompt("Por favor, introduzca su DNI: ");
+
+        while (!regex.test(dni)) {
+            dni = prompt("Inválido: Los DNIs válidos deben comenzar por un carácter K, L, X, Y o Z o un dígito, seguido de 7 dígitos y un carácter diferente de I, O y U. " +
+                "\nLos caracteres deben escribirse en mayúsculas.\nPor favor, introduzca su DNI: "
+            );
+        }
+
+        confirm("DNI válido");
+    </script>
+</body>
+
+</html>

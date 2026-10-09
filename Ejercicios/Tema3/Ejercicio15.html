@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 15</title>
+</head>
+
+<body>
+    <script>
+        let regex = /^((0[1-9])|([1-4][0-9])|(5[0-2]))[0-9]{3}$/;
+        let codigoPostal = prompt("Por favor, introduzca su código postal: ");
+
+        while (!regex.test(codigoPostal)) {
+            codigoPostal = prompt("Incorrecto: El código postal español es consiste en una cadena de 5 cifras en el intervalo entre 01000 y 52999." +
+                "\nPor favor, introduzca su código postal: "
+            );
+        }
+
+        confirm("Código postal válido.");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+    <h2>Caso for..in</h2>
+    <p id="Caso1"></p>
+    <h2>Caso for..of</h2>
+    <p id="Caso2"></p>
+    <script>
+        let cadena = "Hola caracola";
+        let cadenaRes = "";
+        for (let posicion in cadena) {
+            cadenaRes += cadena[posicion] + " ";
+        }
+
+        document.getElementById("Caso1").textContent = cadenaRes;
+
+        cadenaRes = "";
+
+        for (const letra of cadena) {
+            cadenaRes += letra + " ";
+        }
+
+        document.getElementById("Caso2").textContent = cadenaRes;
+    </script>
+</body>
+
+</html>

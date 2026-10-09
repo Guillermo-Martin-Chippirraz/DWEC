@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <script>
+        const NOTAS = [];
+
+        for (let i = 0; i < 3; i++) {
+            NOTAS[i] = [];
+            NOTAS[i][0] = prompt(`Por favor, introduzca el nombre del estudiante ${i + 1}:`);
+            document.write(`<h3>Notas de ${NOTAS[i][0]}: </h3>`)
+            document.write("<p>");
+            for (let j = 1; j < 6; j++) {
+                NOTAS[i][j] = prompt(`A continuación, por favor, introduzca la nota ${j}/6 para el estudiante ${NOTAS[i][0]}: `);
+                if (j != 5)
+                    document.write(`Nota ${j} -> ${NOTAS[i][j]}, `);
+                else
+                    document.write(`Nota ${j} -> ${NOTAS[i][j]}`);
+            }
+
+            document.write("</p><br>");
+        }
+    </script>
+</body>
+
+</html>
