@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartínChippirraz_PRUEBA10EVA1</title>
+</head>
+
+<body>
+    <script>
+        //Se declara la constante regex que contiene una expresión regular con los caracteres válidos para la clave, que, como se puede ver, debe ser
+        //exactamente una cadena de entre uno y seis dígitos
+        const regex = /^[0-9]{1,6}$/;
+        //Se define la variable local clave y se le asigna el valor devuelto por la función prompt,
+        //la cual solicita al usuario introducir un número entero entre 1 y 6 cifras
+        let clave = prompt("Por favor, introduzca una clave de entre 1 y 6 cifras: ");
+
+        //Se abre un bucle while que evalúa si el valor devuelto por la función test invocada por la constante regex y con la variable local clave como argumento es falso
+        while (!regex.test(clave)) {
+            //En caso de cumplirse la condición, se notifica al usuario y se solicita un valor correcto
+            clave = prompt("La clave introducida no es válida. Por favor, introduzca una clave de entre 1 y 6 cifras: ");
+        }
+
+        //Se declara la variable local texto y se le asigna la cadena de texto devuelta por la función prompt,
+        //la cual solicita al usuario introducir una cadena de texto
+        let texto = prompt("Por favor, introduzca el texto a cifrar: ");
+
+        //Se abre un bucle while que evalúa si el valor almacenado en la variable local texto es no nulo e igual a la cadena vacía
+        while (texto != null && texto.length < clave.length) {
+            //En caso de cumplirse la condición, se notifica al usuario y se solicita un valor correcto
+            texto = prompt("El texto a cifrar debe tener una longitud mayor o igual que el de la clave");
+        }
+
+        //Se abre un if que evalúa si el contenido de la variable local texto es nulo
+        //Lo que significa que se ha cancelado la acción de introducir texto
+        if (texto == null) {
+            //En caso afirmativo, se imprime en pantalla el texto entre paréntesis como contenido de un párrafo
+            document.write("<p>Gracias por usar nuestro software.</p>.");
+        } else {
+            //En cualquier otro caso se procede a cifrar el texto
+            //Para ello se declaran cinco variables locales
+            //caracterUNICODE almacenará el código UNICODE correspondiente al carácter oportuno
+            let caracterUNICODE;
+            //caracterUNICODECifrado almacenará el código UNICODE correspondiente al carácter cifrado
+            let caracterUNICODECifrado;
+            //caracterCifrado almacenará el nuevo carácter proporcionado por el código UNICODE tras aplicar el cifrado correspondiente
+            let caracterCifrado;
+            //iteradorClave inicializado a cero indicará el dígito de la variable local clave para el cifrado del texto
+            let iteradorClave = 0;
+            //cifrado inicializado a cadena vacía almacenará la cadena de texto final tras el proceso de cifrado
+            let cifrado = "";
+
+            //Se abre un bucle for declarando la variable local de iteración i y se le asignará el valor 0
+            //Se establece como condición de parada del bucle for que el valor contenido en la variable local i sea menor que la longitud de la cadena almacenada en la variable local texto
+            //Al final de cada bucle, se incrementa en 1 el valor de la variable local i
+            for (let i = 0; i < texto.length; i++) {
+                //Se asigna el valor devuelto por el método charCodeAt invocado por la cadena almacneada en la variable local texto y el valor de la variable local i como argumento
+                //en la variable local caracterUNICODE
+                caracterUNICODE = texto.charCodeAt(i);
+
+                //Se asigna la suma del valor almacenado en la variable local caracterUNICODE y el número devuelto por el método Number con el valor del carácter de 
+                //la variable local clave ubicada en la posición indicada por la variable local iterador clave introducida como argumento en la variable local caracterUNICODECifrado
+                caracterUNICODECifrado = caracterUNICODE + Number(clave[iteradorClave]);
+
+                //Se asigna el valor devuelto por el método fromCodePoint con el valor almacenado por la variable local caracterUNICODECifrado como argumento
+                //a la variable local caracterCifrado
+                caracterCifrado = String.fromCharCode(caracterUNICODECifrado);
+
+                //Se usa el operador de suma y asignación para concatenar el valor de la variable local caracterCifrado a la variable local caracter
+                cifrado += caracterCifrado;
+
+                //Se evalúa si la variable local iteradorClave coincide con la diferencia de la longitud de la variable local calve y 1
+                if (iteradorClave == clave.length - 1)
+                //En caso positivo, se asigna el valor 0 a la variable local iteradorClave
+                    iteradorClave = 0;
+                else
+                //En cualquier otro caso, se incrementa en 1 el valor de la variable local iteradorClave
+                    iteradorClave++;
+            }
+
+            //Se le muestra al usuario el texto cifrado a través de un cuadro de diálogo
+            confirm("El texto cifrado es: " + cifrado);
+
+            //Se imprime en pantalla en diferentes párrafos el texto cifrado, almacenado en la variable local texto,
+            //el texto cifrado, almacenado en la variable local cifrado, y la clave utilizada, almacenada en la variable local clave
+            document.write(
+                "<p>El texto cifrado es: " + cifrado + ".</p>" +
+                "<p>El texto original es: " + texto + ".</p>" +
+                "<p>La clave utilizada es: " + clave + ".</p>"
+            );
+        }
+    </script>
+</body>
+
+</html>
