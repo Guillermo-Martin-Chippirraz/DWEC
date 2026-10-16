@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 24</title>
+</head>
+
+<body>
+    <script>
+        //REVISAR EN CASA
+        let regex = /^((((([0-2][1-9])|(3[0-1])))\/((0[13578])|(1[02])))|(((([0-2][1-9])|(30)))\/((0[469])|(11)))|(((([0-1][1-9])|(2[0-8])))\/02))\/((0{3}[1-9])([0-1](0[1-9]\d)|([1-9]\d{2}))|([0-1])|(20[0-1]\d))|(202[0-5])$/;
+        let fecha = prompt("Por favor, introduzca fecha: ");
+
+        while (!regex.test(fecha)) {
+            fecha = prompt("Incorrecto: La fecha debe ir en formato dd/mm/aaaa desde 01/01/0001 hasta el 31/12/2025" +
+                "\nPor favor, introduzca una fecha válida: "
+            );
+        }
+
+        confirm("fecha válida.");
+    </script>
+</body>
+
+</html>

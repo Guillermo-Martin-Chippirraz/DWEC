@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 18</title>
+</head>
+
+<body>
+    <script>
+        let regex = /^(((\d\d)|(\d)|([0-1]\d\d)|(2[0-4]\d)|(25[0-5])).){3}(\d\d)|(\d)|([0-1]\d\d)|(2[0-4]\d)|(25[0-5])$/;
+        let direccionIPv4 = prompt("Por favor, introduzca su dirección IPv4: ");
+
+        while (!regex.test(direccionIPv4)) {
+            direccionIPv4 = prompt("Incorrecto: Una dirección IPv4 tiene la forma 000-255.000-255.000-255.000-255." +
+                "\nPor favor, introduzca su dirección IPv4: "
+            );
+        }
+
+        confirm("Dirección IPv4 válida.");
+    </script>
+</body>
+
+</html>

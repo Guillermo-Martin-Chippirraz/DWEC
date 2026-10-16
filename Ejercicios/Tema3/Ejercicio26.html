@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 26</title>
+</head>
+
+<body>
+    <script>
+        let regex = /^(http(s?):\/\/)?[0-9a-zA-Z.-]+\.[a-zA-Z]{2,6}\/(.*\/)*$/;
+        let url = prompt("Por favor, introduzca url: ");
+
+        while (!regex.test(url)) {
+            url = prompt("Incorrecto: Una dirección url puede empezar con http://, https:// o ninguno de ellos, " +
+                "continuar con uno o más números, letras, puntos o guiones y terminar con un último punto seguido de una cadena de dos a seis caracteres " +
+                "pudiéndose usar el carácter / para seleccionar varias carpetas." +
+                "\nPor favor, introduzca una url válida: "
+            );
+        }
+
+        confirm("Dirección url válida.");
+    </script>
+</body>
+
+</html>
