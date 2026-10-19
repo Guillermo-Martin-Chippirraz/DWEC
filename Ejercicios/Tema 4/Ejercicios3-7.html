@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios 3-7</title>
+</head>
+
+<body>
+    <script>
+        //Ejercicio 3
+
+        let numero = Number.parseInt(prompt("Por favor, escriba el número cuya paridad se va a evaluar"));
+
+        while (!Number.isInteger(numero)) {
+            numero = Number.parseInt(prompt("Incorrecto: La paridad sólo puede evaluarse sobre números enteros. \nPor favor, introduzca un valor correcto: "));
+        }
+
+        const paridad = (entero) => (entero % 2 == 0) ? "Par" : "Impar";
+
+        //Ejercicio 4
+        let altoRectangulo = Number.parseFloat(prompt("Por favor, escriba el alto del rectángulo: "));
+        while (isNaN(altoRectangulo) || altoRectangulo <= 0) {
+            altoRectangulo = Number.parseFloat(prompt(
+                "Incorrecto: La altura de un rectángulo debe ser un número positivo.\nIntroduzca un valor correcto: "
+            ));
+        }
+
+        let anchoRectangulo = Number.parseFloat(prompt("Por favor, escriba la anchura del rectángulo: "));
+        while (isNaN(anchoRectangulo) || anchoRectangulo <= 0) {
+            anchoRectangulo = Number.parseFloat(prompt(
+                "Incorrecto: La anchura de un rectángulo debe ser un número positivo.\nIntroduzca un valor correcto: "
+            ));
+        }
+
+        const areaRectangulo = (anchura, altura) => (anchura * altura);
+
+        //Ejercicio 5
+        let altoTriangulo = Number.parseFloat(prompt("Por favor, escriba el alto del triángulo: "));
+        while (isNaN(altoTriangulo) || altoTriangulo <= 0) {
+            altoTriangulo = Number.parseFloat(prompt(
+                "Incorrecto: La altura de un triángulo debe ser un número positivo.\nIntroduzca un valor correcto: "
+            ));
+        }
+
+        let baseTriangulo = Number.parseFloat(prompt("Por favor, escriba la longitud de la base del triángulo: "));
+        while (isNaN(baseTriangulo) || baseTriangulo <= 0) {
+            baseTriangulo = Number.parseFloat(prompt(
+                "Incorrecto: La longitud de la base de un triángulo debe ser un número positivo.\nIntroduzca un valor correcto: "
+            ));
+        }
+
+        //Ejercicio 5
+        //Ejercicio 6
+        //Ejercicio 7
+    </script>
+</body>
+
+</html>

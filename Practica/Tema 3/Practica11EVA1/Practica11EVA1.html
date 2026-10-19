@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA11T3EVA1</title>
+</head>
+
+<body>
+    <!-- Importación del script externo que contiene la lógica de validación -->
+    <script src="./js/Ejercicios.js"></script>
+
+    <!-- Contenedores HTML donde se inyectarán los resultados de cada ejercicio -->
+    <h1>Resultados ejercicio 13</h1>
+    <div id="Ejercicio13"></div>
+
+    <h1>Resultados ejercicio 14</h1>
+    <div id="Ejercicio14"></div>
+
+    <h1>Resultados ejercicio 15</h1>
+    <div id="Ejercicio15"></div>
+
+    <h1>Resultados ejercicio 17</h1>
+    <div id="Ejercicio17"></div>
+
+    <!-- Diálogo interactivo para el Ejercico 13 (Validación de Login) -->
+    <dialog open>
+        <h1>Ejercicio 13</h1>
+        <script>
+            let nombreDeUsuario = prompt("Por favor, introduzca su nombre de usuario.");
+            let validacionLogin = loginValidator(nombreDeUsuario);
+            document.getElementById("Ejercicio13").innerHTML = validacionLogin;
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 14 (Validación de DNI) -->
+    <dialog open>
+        <h1>Ejercicio 14</h1>
+        <script>
+            let dni = prompt("Por favor, introduzca su DNI.");
+            let validacionDNI = dniValidator(dni);
+            document.getElementById("Ejercicio14").innerHTML = validacionDNI;
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 15 (Validación de Código Postal) -->
+    <dialog open>
+        <h1>Ejercicio 15</h1>
+        <script>
+            let codigoPostal = prompt("Por favor, introduzca su código postal.");
+            let validacionCodigoPostal = codigoPostalValidator(codigoPostal);
+            document.getElementById("Ejercicio15").innerHTML = validacionCodigoPostal;
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 17 (Validación de IPv4) -->
+    <dialog open>
+        <h1>Ejercicio 17</h1>
+        <script>
+            let direccionIPv4 = prompt("Por favor, introduzca su dirección IPv4.");
+            let validacionDireccionIPv4 = direccionIPv4Validator(direccionIPv4);
+            document.getElementById("Ejercicio17").innerHTML = validacionDireccionIPv4;
+        </script>
+    </dialog>
+</body>
+
+</html>
