@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartinChippirraz_PRACTICA12T3EVA1</title>
+</head>
+
+<body>
+    <!-- Importación del script externo que contiene la lógica de validación -->
+    <script src="./js/Ejercicios.js"></script>
+
+    <!-- Contenedores HTML donde se inyectarán los resultados de cada ejercicio -->
+    <h1>Resultados ejercicio 22</h1>
+    <h2>Sólo alfanuméricos y guion bajo</h2>
+    <div id="Ejercicio22Parte1"></div>
+    <h2>Uno o más caracteres alfanuméricos</h2>
+    <div id="Ejercicio22Parte2"></div>
+
+    <h1>Resultados ejercicio 23</h1>
+    <div id="Ejercicio23"></div>
+
+    <h1>Resultados ejercicio 24</h1>
+    <div id="Ejercicio24"></div>
+
+    <h1>Resultados ejercicio 25</h1>
+    <div id="Ejercicio25"></div>
+
+    <!-- Diálogo interactivo para el Ejercico 22 (Validación de sólo caracteres alfanuméricos y guion bajo y uno o más caracteres alfanuméricos) -->
+    <dialog open>
+        <h1>Ejercicio 22</h1>
+        <script>
+            let caracteresAlfanumericosYGuionBajo = prompt("Por favor, introduzca sólo caracteres alfanuméricos o guion bajo.");
+            let validacionCaracteresAlfanumericosYGuionBajo = soloAlfanumericosYGuionBajoValidator(caracteresAlfanumericosYGuionBajo);
+            document.getElementById("Ejercicio22Parte1").innerHTML = validacionCaracteresAlfanumericosYGuionBajo;
+
+            let unoOMasCaracteresAlfanumericos = prompt("Por favor, introduzca uno o más caracteres alfanuméricos: ");
+            let validacionUnoOMasCaracteresAlfanumericos = unoOMasCaracteresAlfanumericosValidator(unoOMasCaracteresAlfanumericos);
+            document.getElementById("Ejercicio22Parte2").innerHTML = validacionUnoOMasCaracteresAlfanumericos
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 23 (Validación de nombres y apellidos) -->
+    <dialog open>
+        <h1>Ejercicio 23</h1>
+        <script>
+            let nombreYApellidos = prompt("Por favor, introduzca su nombre y apellidos.");
+            let validacionNombreYApellidos = nombreYApellidosValidator(nombreYApellidos);
+            document.getElementById("Ejercicio23").innerHTML = validacionNombreYApellidos;
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 24 (Validación de Formato de Fecha) -->
+    <dialog open>
+        <h1>Ejercicio 24</h1>
+        <script>
+            let fecha = prompt("Por favor, introduzca una fecha en formato español.");
+            let validacionFecha = fechaFormatoValidator(fecha);
+            document.getElementById("Ejercicio24").innerHTML = validacionFecha;
+        </script>
+    </dialog>
+
+    <!-- Diálogo interactivo para el Ejercicio 25 (Validación de E-Mail) -->
+    <dialog open>
+        <h1>Ejercicio 25</h1>
+        <script>
+            let eMail = prompt("Por favor, introduzca su correo electrónico.");
+            let validacionEMail = emailFormatoValidator(eMail);
+            document.getElementById("Ejercicio25").innerHTML = validacionEMail;
+        </script>
+    </dialog>
+</body>
+
+</html>

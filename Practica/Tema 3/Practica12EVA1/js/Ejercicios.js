@@ -9,6 +9,8 @@ function soloAlfanumericosYGuionBajoValidator(texto) {
 
     if (texto == null)
         return false;
+
+    return "Cadena válida.";
 }
 
 function unoOMasCaracteresAlfanumericosValidator(texto) {
@@ -22,10 +24,12 @@ function unoOMasCaracteresAlfanumericosValidator(texto) {
 
     if (texto == null)
         return false;
+
+    return "Cadena válida.";
 }
 
 function nombreYApellidosValidator(nombreYApellidos) {
-    regex = /^[A-Z][a-z]+\s[A-Z][a-z](\s[A-Z][a-z])?$/;
+    regex = /^[A-Z][a-z]+\s[A-Z][a-z]+(\s[A-Z][a-z]+)?$/;
 
     while (!regex.test(nombreYApellidos) && nombreYApellidos != null) {
         nombreYApellidos = prompt("Incorrecto: Un nombre completo en español, consiste de un primer nombre y uno o dos apellidos, cada uno empieza por mayúscula y hay espacio entre ellos" +
@@ -35,6 +39,8 @@ function nombreYApellidosValidator(nombreYApellidos) {
 
     if (nombreYApellidos == null)
         return false;
+
+    return "Nombre y apellidos válidos.";
 }
 
 function fechaFormatoValidator(fecha) {
@@ -48,6 +54,8 @@ function fechaFormatoValidator(fecha) {
 
     if (fecha == null)
         return false;
+
+    return "Fecha válida";
 }
 
 function emailFormatoValidator(email) {
@@ -62,4 +70,6 @@ function emailFormatoValidator(email) {
 
     if (email == null)
         return false;
+
+    return "E-mail válido.";
 }
