@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartínChippirraz_PRACTICA13T4EVA1</title>
+</head>
+
+<body>
+    <script src="./js/Practica13EVA1.js"></script>
+
+    <h2>Versión recursiva</h2>
+    <p id="recursiva"></p>
+    <h2>Versión iterativa</h2>
+    <p id="iterativa"></p>
+    <h2>Versión directa</h2>
+    <p id="directa"></p>
+
+    <script>
+        //DOCUMENTAR
+        let num = parseInt(prompt("Por favor, introduzca un número: "));
+
+        while (!fibonacciRecursivo(num)) {
+            num = parseInt(prompt("Por favor, introduzca un número entero no negativo (es decir, cualquier número sin decimales mayor o igual que 0): "));
+        }
+        let fibonacciRe = fibonacciRecursivo(num);
+
+        let fibonacciI = fibonacciIterativo(num);
+
+        let fibonacciDi = fibonacciDirecto(num);
+
+        document.getElementById("recursiva").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciRe + ".";
+
+        document.getElementById("iterativa").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciI + ".";
+
+        document.getElementById("directa").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciDi + ".";
+    </script>
+</body>
+
+</html>

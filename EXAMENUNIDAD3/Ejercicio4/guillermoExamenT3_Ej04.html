@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guillermoExamenT3_Ej04</title>
+</head>
+
+<body>
+    <script>
+        function showFrases() {
+            return document.write(arrayFrases[parseInt(Math.random() * (arrayFrases.length - 1))]) + "<br>";
+        }
+
+        let regex = /^[a-zA-ZáéíúóÁÉÍÓÚüÜ\s\.:,;'"¡¿?!]*$/
+
+        let arrayFrases = [];
+
+        let frase = "";
+        do {
+            frase = prompt("Por favor, introduzca frases una a una. No introduzca nada para finalizar.");
+            if (regex.test(frase)) arrayFrases.push(frase);
+        } while (frase != "");
+
+        setInterval(showFrases, 2000);
+    </script>
+</body>
+
+</html>
