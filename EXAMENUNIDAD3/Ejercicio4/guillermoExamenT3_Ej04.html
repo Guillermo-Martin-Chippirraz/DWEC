@@ -9,20 +9,35 @@
 
 <body>
     <script>
+        //Se declara la función showFrases requerida para el ejercicio
         function showFrases() {
-            return document.write(arrayFrases[parseInt(Math.random() * (arrayFrases.length - 1))]) + "<br>";
+            //Se imprime en pantalla algún valor de la variable arrayFrases y se hace salto de línea
+            //Se selecciona la clave de forma aleatoria parseando a enterio el resultado de Math.random() en el intervalo [0, longitud del array - 1]
+            document.write(arrayFrases[parseInt(Math.random() * (arrayFrases.length - 1))]) + "<br>";
         }
 
+        //Se declara la variable regex
+        //Se almacena la siguiente expresión regular: Exactamente 0 o más caracteres alfabéticos en mayúsculas, minúsculas y con acentos
+        //diacríticos, espacios en blanco y diferentes signos de puntuación
         let regex = /^[a-zA-ZáéíúóÁÉÍÓÚüÜ\s\.:,;'"¡¿?!]*$/
 
+        //Se declara la variable arrayFrases y se asigna el array vacío
         let arrayFrases = [];
 
+        //Se declara la variable frase y se asigna la cadena vacía
         let frase = "";
+
+        //Se inicializa bucle do-while
         do {
+            //Se asigna a la variable frase la devolución de la función prompt con el mensaje imperativo como parámetro
             frase = prompt("Por favor, introduzca frases una a una. No introduzca nada para finalizar.");
+            //Se evalúa si el contenido de la variable frase contiene el patrón solicitado por la variable regex, en caso positivo, se agrega la frase a la
+            //variable arrayFrases
             if (regex.test(frase)) arrayFrases.push(frase);
+            //La condición del while evalúa si la variable frase no contiene la cadena vacía. En caso positivo, se hace otra iteración
         } while (frase != "");
 
+        //Se hace callback la función showFrases cada 2000 milisegundos
         setInterval(showFrases, 2000);
     </script>
 </body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14</title>
+</head>
+
+<body>
+
+    <h1>Ordenación de objetos</h1>
+    <p>
+        Objeto original <br>
+        <span id="objetoOriginal"></span>
+    </p>
+    <p>
+        Objeto ordenado <br>
+        <span id="objetoOrdenado"></span>
+    </p>
+    <script>
+        let objetos = [{
+            nombre: "Pickles",
+            apellido1: "Unknown",
+            DNI: "X5.112.674P"
+        }, {
+            nombre: "Magnus",
+            apellido1: "Ámdeath",
+            DNI: "45.999.444X"
+        }, {
+            nombre: "Seth",
+            apellido1: "Unknown",
+            DNI: "44.922.123S"
+        }];
+
+        document.getElementById("objetoOriginal").innerText = JSON.stringify(objetos);
+
+        function compararPorNombre(objeto1, objeto2) {
+            if (objeto1.apellido1.localeCompare(objeto2.apellido1) == 0)
+                return objeto1.nombre.localeCompare(objeto2.nombre);
+            else return objeto1.apellido1.localeCompare(objeto2.apellido1.localeCompare(objeto2.apellido1));
+        }
+
+        let objetosOrdenados = objetos.sort(compararPorNombre);
+
+        document.getElementById("objetoOrdenado").innerText = JSON.stringify(objetosOrdenados);
+    </script>
+</body>
+
+</html>
