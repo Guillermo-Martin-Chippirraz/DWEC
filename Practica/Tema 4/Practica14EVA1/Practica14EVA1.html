@@ -8,10 +8,24 @@
 </head>
 
 <body>
+    <style>
+        /*Se asigna con la etiqueta style las propiedades top, left, width, height y position del 
+        selector de tipo div, para fijar todos los divs del documento en la esquina superior derecha
+        y ocupando el área máxima. Se posiciona en un punto fijo absoluto*/
+        
+        div {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+        }
+    </style>
     <script src="./js/Practica14EVA1.js"></script>
-    <div id="fondo" style="width: 100%; height: 100%;"></div>
+    <!--Se asigna el valor "fondo" al atributo id del elemento div-->
+    <div id="fondo"></div>
     <script>
-        //REVISAR Y DOCUMENTAR
+        //Se invoca la función setInterval con la función "funcionCB" como callback y 2000 como parámetro temporal
         setInterval(funcionCB, 2000);
     </script>
 </body>

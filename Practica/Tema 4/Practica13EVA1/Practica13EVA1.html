@@ -18,22 +18,30 @@
     <p id="directa"></p>
 
     <script>
-        //DOCUMENTAR
+        //Se declara una variable y se asigna el parseo a entero del valor devuelto por la función prompt con el mensaje
+        //imperativo indicado como parámetro
         let num = parseInt(prompt("Por favor, introduzca un número: "));
 
+        //Se inicializa un bucle while en el que se toma la negación del valor devuelto por la función fibonacciRecursivo con la variable "num" pasada por parámetros
+        //En caso de devolver un número, este valor es true y en el while aparece un false
         while (!fibonacciRecursivo(num)) {
+            //En caso de entrar al bucle, se asigna a la variable "num" el parseo a entero el valor devuelto por la función prompt con el 
+            //mensaje imperativo indicado como parámetro
             num = parseInt(prompt("Por favor, introduzca un número entero no negativo (es decir, cualquier número sin decimales mayor o igual que 0): "));
         }
+
+        //Se declara una variable y se asigna el valor devuelto por la función fibonaccioRecursivo con la variable "num" pasada por parámetros
         let fibonacciRe = fibonacciRecursivo(num);
-
+        //Se declara una variable y se asigna el valor devuelto por la función fibonacciIterativo con la variable "num" pasada por parámetros
         let fibonacciI = fibonacciIterativo(num);
-
+        //Se declara una variable y se asigna el valor devuelto por la función fibonacciDirecto con la variable "num" pasada por parámetros
         let fibonacciDi = fibonacciDirecto(num);
 
+        //Se le asigna a la propiedad "innerText" del elemento del documento obtenido por el id "recursiva", un mensaje informativo con el valor de la variable "fibonacciRe" para la variable "num"
         document.getElementById("recursiva").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciRe + ".";
-
+        //Se le asigna a la propiedad "innerText" del elemento del documento obtenido por el id "iterativa", un mensaje informativo con el valor de la variable "fibonacciI" para la variable "num"
         document.getElementById("iterativa").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciI + ".";
-
+        //Se le asigna a la propiedad "innerText" del elemento del documento obtenido por el id "directa", un mensaje informativo con el valor de la variable "fibonacciDi" para la variable "num"
         document.getElementById("directa").innerText = "El valor " + num + " de la sucesión de Fibonacci es " + fibonacciDi + ".";
     </script>
 </body>
