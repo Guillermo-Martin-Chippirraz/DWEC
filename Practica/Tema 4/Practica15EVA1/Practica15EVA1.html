@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuillermoMartínChippirraz_PRACTICA15T4EVA1</title>
+</head>
+
+<body>
+    <h2>Información General de los Personajes</h2>
+    <p id="infoPersonajes"></p>
+
+    <h2>Promedio de Edad</h2>
+    <p id="edadPromedio"></p>
+
+    <h2>Listado de Nombre y Profesión</h2>
+    <p id="listadoNombreYProfesión"></p>
+
+    <h2>Lista de Estudiantes Mayores de 11 Años</h2>
+    <p id="listadoEstudiantesMayoresDeOnce"></p>
+    <script>
+        //Se declara una constante y se almacena en ella el JSON original
+        const JSON_ORIGINAL = `{
+            "personajes": [{
+                    "nombre": "Eric",
+                    "apellidos": "Cartman",
+                    "profesión": "Estudiante",
+                    "edad": 13
+                },
+                {
+                    "nombre": "Stan",
+                    "apellidos": "Marsh",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Kyle",
+                    "apellidos": "Broflovski",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Kenny",
+                    "apellidos": "McCormick",
+                    "profesión": "Estudiante",
+                    "edad": 13
+                },
+                {
+                    "nombre": "Butters",
+                    "apellidos": "Stotch",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Wendy",
+                    "apellidos": "Testaburger",
+                    "profesión": "Estudiante",
+                    "edad": 12
+                },
+                {
+                    "nombre": "Randy",
+                    "apellidos": "Marsh",
+                    "profesión": "Geólogo",
+                    "edad": 45
+                },
+                {
+                    "nombre": "Sharon",
+                    "apellidos": "Marsh",
+                    "profesión": "Recepcionista",
+                    "edad": 42
+                },
+                {
+                    "nombre": "Chef",
+                    "apellidos": "",
+                    "profesión": "Cocinero",
+                    "edad": 45
+                },
+                {
+                    "nombre": "Mr. Garrison",
+                    "apellidos": "",
+                    "profesión": "Maestro",
+                    "edad": 50
+                },
+                {
+                    "nombre": "Mr. Mackey",
+                    "apellidos": "",
+                    "profesión": "Consejero escolar",
+                    "edad": 45
+                },
+                {
+                    "nombre": "Ms. Choksondik",
+                    "apellidos": "",
+                    "profesión": "Maestra",
+                    "edad": 40
+                },
+                {
+                    "nombre": "Tweek",
+                    "apellidos": "Tweak",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Craig",
+                    "apellidos": "Tucker",
+                    "profesión": "Estudiante",
+                    "edad": 15
+                },
+                {
+                    "nombre": "Token",
+                    "apellidos": "Black",
+                    "profesión": "Estudiante",
+                    "edad": 12
+                },
+                {
+                    "nombre": "Bebe",
+                    "apellidos": "Stevens",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Clyde",
+                    "apellidos": "Donovan",
+                    "profesión": "Estudiante",
+                    "edad": 12
+                },
+                {
+                    "nombre": "Timmy",
+                    "apellidos": "Burch",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Jimmy",
+                    "apellidos": "Valmer",
+                    "profesión": "Estudiante",
+                    "edad": 9
+                },
+                {
+                    "nombre": "Heidi",
+                    "apellidos": "Turner",
+                    "profesión": "Estudiante",
+                    "edad": 12
+                }
+            ]
+        }`;
+
+        //Se declara una variable y se le asigna la devolución del método parse con la constante JSON_ORIGINAL pasado por parámetros
+        let objetoPersonajes = JSON.parse(JSON_ORIGINAL);
+
+        //Se declara una variable y se le asigna el array almacenado en el atributo personajes del objeto objetoPersonajes
+        let listaPersonajes = objetoPersonajes.personajes;
+
+        //Se declara una variable y se le asigna la cadena vacía
+        let info = "";
+
+        //Se invoca el método forEach desde el array listaPersonajes y, por cada elemento, se concatena al contenido de la variable info una cadena de texto 
+        //en HTML que lista a los personajes por nombre completo en cuyas sublistas se halla la profesión y edad correspondientes.
+        listaPersonajes.forEach(personaje => {
+            info += `<ul>
+                    <li>Nombre: ${personaje.nombre} ${personaje.apellidos}
+                        <ul>
+                            <li>Profesión: ${personaje.profesión}</li>
+                            <li>Edad: ${personaje.edad}</li>
+                        </ul>
+                    </li>
+                </ul>`;
+        });
+
+        //Se asigna el contenido de la variable info a la propiedad innerHTML del párrafo cuyo id es infoPersonajes
+        document.getElementById("infoPersonajes").innerHTML = info;
+
+        //Se declara una variable y se le asigna la devolución del método reduce invocado por el array listaPersonajes con los parámetros suma, como acumulador, y personaje, como elemento del array,
+        //y se hace una suma de las edades correspondientes a cada personaje, comenzando con el 0 como valor inicial de suma.
+        let sumaEdades = listaPersonajes.reduce((suma, personaje) =>
+            suma + personaje.edad,
+            0);
+
+        //Se declara una variable y se le asigna el cociente de la variable sumaEdades y la longitud del array listaPersonajes
+        let promedioEdad = sumaEdades / listaPersonajes.length;
+
+        //Se asigna a la propiedad innerText del párrafo con id edadPromedio el texto correspondiente con el valor de la variable promedioEdad 
+        //truncado a las centenas
+        document.getElementById("edadPromedio").innerText = `El promedio de edad de los personajes es de: ${promedioEdad.toFixed(2)} años`;
+
+        //Se declara una variable y se le asigna la devolución del método map invocado por el array listaPersonajes
+        //Se devuelve un array de objetos con el nombre completo del personaje y su profesión como atributos.
+        let listaNombreYProfesion = listaPersonajes.map(personaje => {
+            return {
+                nombreCompleto: `${personaje.nombre} ${personaje.apellidos}`,
+                profesión: personaje.profesión
+            };
+        });
+
+        //Se declara una variable y se le asigna la etiqueta de apertura de una lista no ordenada en HTML
+        let listadoNombreYProfesión = "<ul>";
+
+        //Se invoca el método forEach sobre el array listaNombreYProfesion donde, para cada objeto, se concatena un elemento de la lista desordenada con los valores
+        //correspondientes almacenados en los atributos nombreCompleto y profesión
+        listaNombreYProfesion.forEach(item => {
+            listadoNombreYProfesión += `<li>${item.nombreCompleto} - ${item.profesión}</li>`;
+        });
+
+        //Se concatena la etiqueta de cierre de la lista no ordenada en HTML
+        listadoNombreYProfesión += "</ul>";
+
+        //Se asigna a la propiedad innerHTML del párrafo con id listadoNombreYProfesión el contenido de la variable listadoNombreYProfesión
+        document.getElementById("listadoNombreYProfesión").innerHTML = listadoNombreYProfesión;
+
+        //Se declara una variable y se le asigna el array devuelto por el método filter invocado por el array listaPersonajes que filtra bajo la condición de que
+        //la edad del personaje sea mayor que once y que su profesión en minúsculas coincida con la cadena estudiante
+        let mayoresDeOnce = listaPersonajes.filter(personaje => personaje.edad > 11 && personaje.profesión.toLowerCase() == "estudiante");
+
+        //Se declara una variable y se le asigna la etiqueta de apertura de una lista no ordenada en HTML
+        let listadoEstudiantesMayoresDeOnce = "<ul>";
+
+        //Se invoca el método forEach sobre el array mayoresDeOnce y, por cada estudiante, se concatena en la variable listadoEstudiantesMayoresDeOnce un elemento de lista HTML con el nombre, los apellidos y la edad del mismo.
+        mayoresDeOnce.forEach(estudiante => listadoEstudiantesMayoresDeOnce += `<li>${estudiante.nombre}  ${estudiante.apellidos} - ${estudiante.edad} años</li>`);
+
+        //Se concatena en la variable listadoEstudiantesMayoresDeOnce el cierre de la lista no ordenada en HTML
+        listadoEstudiantesMayoresDeOnce += "</ul>";
+
+        //Se asigna a la propiedad innerHTML del párrafo con id listadoEstudiantesMayoresDeOnce el contenido de la variable homónima
+        document.getElementById("listadoEstudiantesMayoresDeOnce").innerHTML = listadoEstudiantesMayoresDeOnce;
+    </script>
+</body>
+
+</html>
