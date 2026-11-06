@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <script>
+        let meteorito = {
+            x: 0,
+            y: 0,
+            velGiro: 0,
+            velDesp: 0,
+            muestraConf: function() {
+                console.log(
+                    `
+                    - Coordenadas cartesianas (plano): (${this.x}, ${this.y}).
+                    - Velocidad de rotación: ${this.velGiro} rad/s.
+                    - Velocidad de traslación: ${this.velDesp} m/s.
+                    `);
+            },
+        };
+
+        meteorito.muestraConf();
+    </script>
+</body>
+
+</html>
