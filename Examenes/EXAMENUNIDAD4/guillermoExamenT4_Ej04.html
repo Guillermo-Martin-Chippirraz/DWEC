@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guillermoExamenT4_Ej04</title>
+</head>
+
+<body>
+    <div id="personaje">
+
+    </div>
+    <button id="Empezar" onclick="muestraJson()">Empezar</button>
+    <button id="Parar" onclick="detieneJson()">Parar</button>
+
+    <script>
+        const cadenaJSON = `{
+            "personajes": [
+                { "nombre": "Éric", "apellidos": "artman", "profesión": "Estudiante", "edad": 13 },
+                { "nombre": "Stan", "apellidos": "Marsh", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Kyle", "apellidos": "Broflovski", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Kenny", "apellidos": "McCormick", "profesión": "Estudiante", "edad": 13 },
+                { "nombre": "útters", "apellidos": "Stotch", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Úendy", "apellidos": "Testaburger", "profesión": "Estudiante", "edad": 12 },
+                { "nombre": "Randy", "apellidos": "arsh", "profesión": "Geólogo", "edad": 45 },
+                { "nombre": "Sharon", "apellidos": "Marsh", "profesión": "Recepcionista", "edad": 9 },
+                { "nombre": "Chef", "apellidos": "", "profesión": "Cocinero", "edad": 45 },
+                { "nombre": "Mr. Garrison", "apellidos": "", "profesión": "Maestro", "edad": 50 },
+                { "nombre": "Mr. Mackey", "apellidos": "", "profesión": "Consejero escolar", "edad": 45 },
+                { "nombre": "Ms. Choksondik", "apellidos": "", "profesión": "Maestra", "edad": 40 },
+                { "nombre": "Tweek", "apellidos": "Tweak", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Craig", "apellidos": "Tucker", "profesión": "Estudiante", "edad": 15 },
+                { "nombre": "Token", "apellidos": "Black", "profesión": "Estudiante", "edad": 12 },
+                { "nombre": "bebe", "apellidos": "Évens", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Clyde", "apellidos": "Donovan", "profesión": "Estudiante", "edad": 12 },
+                { "nombre": "Timmy", "apellidos": "burch", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Jimmy", "apellidos": "Valmer", "profesión": "Estudiante", "edad": 9 },
+                { "nombre": "Heidi", "apellidos": "Turner", "profesión": "Estudiante", "edad": 12 }
+            ]
+        }`;
+
+        function formato(personaje) {
+            if (personaje instanceof Object) {
+                let resultado = `Nombre -> ${personaje.nombre} \n`;
+                resultado += `Apellidos -> ${personaje.apellidos} \n`;
+                resultado += `Profesión -> ${personaje.profesión} \n`;
+                resultado += `Edad -> ${personaje.edad} \n`;
+                return resultado;
+            }
+        }
+
+        let id;
+
+        function muestraJson() {
+            let arrayPersonajes = cadenaJSON.personajes;
+            id = setInterval((arrayPersonajes, i) => {
+                document.getElementById("personaje").innerText = formato(arrayPersonajes[i])
+            }, 2000);
+        }
+
+        function detieneJson() {
+            clearInterval(id);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guillermoExamenT4_Ej01</title>
+</head>
+
+<body>
+    <script>
+        function tribonacci(number) {
+            if (Number.isInteger(number) && number >= 3) {
+                if (number == 3) return 2;
+                if (number == 4) return 4;
+                if (number == 5) return 7;
+
+                return tribonacci(number - 3) + tribonacci(number - 2) + tribonacci(number - 1);
+            }
+
+            return "El valor introducido no es válido.";
+        }
+
+        let numero = 0;
+        do {
+            numero = parseInt(prompt("Por favor, introduzca un número entero mayor o igual que 3."));
+        } while (numero < 3)
+
+        let resultado = tribonacci(numero);
+
+        confirm(!isNaN(resultado) ? "El elemento " + numero + " de la sucesión de tribonacci es " + resultado : resultado);
+    </script>
+</body>
+
+</html>
