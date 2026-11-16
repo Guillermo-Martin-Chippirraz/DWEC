@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        class Coche {
+
+            constructor(marca, combustible) {
+                let _marca = marca;
+                let _combustible = combustible;
+                let _cantidad = 0;
+            }
+
+            setMarca(marca) {
+                this.marca = marca;
+            }
+
+            getMarca() {
+                return this.marca;
+            }
+
+            setCombustible(combustible) {
+                this.combustible = combustible;
+            }
+
+            getCombustible() {
+                return this.combustible;
+            }
+
+            setCantidad(cantidad) {
+                this.cantidad = cantidad;
+            }
+
+            getCantidad() {
+                return this.cantidad;
+            }
+
+            rellenarDeposito(litros) {
+                this.setCantidad(litros);
+            }
+
+            muestraConf() {
+                console.log("Este coche tiene las siguientes propiedades: \n" +
+                    "- Marca: " + this.marca + ".\n" +
+                    "- Combustible: " + this.combustible + ".\n" +
+                    "- Cantidad de combustible actual: " + this.cantidad + " L."
+                );
+            }
+        }
+
+        let miCoche = new Coche("SEAT", "Gasolina 95");
+        miCoche.rellenarDeposito(40);
+        miCoche.muestraConf();
+    </script>
+</body>
+
+</html>

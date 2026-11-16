@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <script src="./Ejercicio4.js"></script>
+    <script>
+        let pruebaValido = new ParImpar(0);
+        let pruebaInvalido = new ParImpar(1.32);
+        console.log(pruebaValido.getNumero());
+        console.log(pruebaInvalido.getNumero());
+        pruebaValido.setNumero(7);
+        console.log(pruebaValido.getNumero());
+        pruebaValido.error();
+        pruebaInvalido.error();
+        pruebaInvalido.setNumero("Hola");
+        pruebaInvalido.error();
+        document.write(pruebaValido.es() + "<br>");
+        document.write(pruebaInvalido.es() + "<br>");
+        pruebaInvalido.setNumero(6);
+        document.write(pruebaValido.es() + "<br>");
+        pruebaValido.resuelve(20);
+        pruebaInvalido.resuelve(2.2);
+        pruebaValido.muestraRandom();
+    </script>
+</body>
+
+</html>

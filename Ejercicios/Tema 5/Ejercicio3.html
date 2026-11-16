@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <h1>Ejercicio 3: Resultados</h1>
+    <section id="tablaResultados">
+
+    </section>
+    <script>
+        function Coche(marca, combustible) {
+            let _marca = marca;
+            let _combustible = combustible;
+            let _cantidad = 0;
+
+            this.setMarca = marca => {
+                _marca = marca;
+            };
+            this.getMarca = () => _marca;
+            this.setCombustible = combustible => {
+                _combustible = combustible;
+            };
+            this.getCombustible = () => _combustible;
+            this.setCantidad = cantidad => {
+                _cantidad = cantidad;
+            };
+            this.getCantidad = () => _cantidad;
+            this.rellenarDeposito = litros => {
+                this.setCantidad(litros);
+            };
+            this.muestraConf = () => console.log("Este coche tiene las siguientes propiedades: \n" +
+                "- Marca: " + _marca + ".\n" +
+                "- Combustible: " + _combustible + ".\n" +
+                "- Cantidad de combustible actual: " + _cantidad + " L."
+            );
+            this.toTableRow = () => "<tr>" +
+                "<td>" + _marca + "</td>" +
+                "<td>" + _combustible + "</td>" +
+                "<td>" + _cantidad + "</td>";
+        }
+
+        let marca, combustible, cantidad;
+
+        let coches = [];
+
+        do {
+            marca = prompt("Por favor, introduzca la marca del vehículo: ");
+            combustible = prompt("A continuación, por favor, introduzca el tipo de combustible: ");
+            cantidad = prompt("Finalmente, introduzca la cantidad de combustible, en litros, con el que desee llenar el depósito: ", 0);
+
+            while (isNaN(cantidad) || cantidad < 0) {
+                cantidad = prompt("Por favor, introduzca un valor válido, en litros, para la cantidad. Debe ser un número positivo.\n\nEn caso de no introducirse nada, se sobreentenderá que la cantidad es 0.", 0)
+            }
+
+            if (marca !== "" && combustible !== "") {
+                let coche = new Coche(marca, combustible);
+                coche.rellenarDeposito(cantidad);
+                coches.push(coche);
+            }
+        } while (marca !== "" && combustible !== "");
+
+        let tabla = "<table border='1'>" +
+            "<thead>" +
+            "<tr>" +
+            "<th>Marca</th>" +
+            "<th>Combustible</th>" +
+            "<th>Cantidad (L)</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+        for (coche of coches) {
+            coche.muestraConf();
+            tabla += coche.toTableRow();
+        }
+        tabla += "</tbody></table>";
+
+        document.getElementById("tablaResultados").innerHTML = tabla;
+    </script>
+</body>
+
+</html>
