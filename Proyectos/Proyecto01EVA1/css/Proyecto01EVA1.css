@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-fondo: #0F172A;
+    --color-fondo-secundario: #33405C;
+    --color-casilla-descubierta: #A3ACC2;
+    --color-principal: #06B6D4;
+    --color-secundario: #22C55E;
+    --color-mina: #EF4444;
+    --color-uno: #2563EB;
+    --color-dos: #16A34A;
+    --color-tres: #DC2626;
+    --color-cuatro: #7C3AED;
+    --color-cinco: #92400E;
+    --color-seis: #0891B2;
+    --color-siete: #111827;
+    --color-ocho: #6B7280;
+    --color-texto: white;
+    --color-contadores: red;
+    --border-radius-big: 24px;
+    --border-radius-little: 16px;
+}
+
+header {
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto);
+    text-align: center;
+    font-size: 50px;
+}
+
+main {
+    padding: 11.714vh 36.901vw;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-size: 20px;
+}
+
+.form {
+    background-color: var(--color-fondo-secundario);
+    display: flex;
+    flex-direction: column;
+    padding: 3.071vh 5.357vw;
+    gap: 7.286vh;
+    width: 33.675vw;
+    height: 41.857vh;
+    border: none;
+    border-radius: var(--border-radius-big);
+    &.ver {
+        transition: transform 1s ease-in;
+    }
+    &.esconder {
+        transform: translateX(-100vw);
+    }
+    & input {
+        background-color: var(--color-fondo);
+        border: none;
+        border-radius: 10px;
+        width: 12.152vw;
+        height: 2.857vw;
+        &:focus {
+            border: 2px solid var(--color-principal);
+        }
+        &:invalid {
+            background-color: var(--color-mina);
+        }
+    }
+}
+
+button {
+    width: 10.329vw;
+    height: 5.286vh;
+    border: none;
+    border-radius: var(--border-radius-little);
+    &.jugar {
+        background-color: var(--color-secundario);
+        &:hover {
+            background-color: lightgreen;
+            transform: translateY(-5px);
+            transition: background-color 1s ease-in, transform 0.5s ease-in;
+        }
+    }
+    &.limpiar {
+        background-color: var(--color-mina);
+        &:hover {
+            background-color: lightcoral;
+            transform: translateY(-5px);
+            transition: background-color 1s ease-in, transform 0.5s ease-in;
+        }
+    }
+    &.volver {
+        background-color: var(--color-principal);
+        &:hover {
+            background-color: lightskyblue;
+            transform: translateY(-5px);
+            transition: background-color 1s ease-in, transform 0.5s ease-in;
+        }
+    }
+}
+
+.juego {
+    overflow: hidden;
+}
+
+footer {
+    height: 14.286vh;
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto);
+    text-align: left;
+    font-size: 20px;
+    line-height: 105%;
+}

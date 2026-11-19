@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="./css/Proyecto01EVA1.css">
+    <link rel="icon" href="./resources/icons/mina.png">
+</head>
+
+<body>
+    <script src="./js/Proyecto01EVA1.js"></script>
+    <header>
+        <h1>Buscaminas</h1>
+    </header>
+    <main>
+        <form action="/" id="form" class="form ver">
+            <fieldset>
+                <legend>Selecciona el tamaño y las minas</legend>
+                <p>
+                    <span id="tamañoError"></span>
+                    <label for="tamaño">Tamaño (nxn): </label>
+                    <input type="number" name="tamaño" id="tamaño" min="2" max="20" step="1" placeholder="5">
+                </p>
+                <p>
+                    <span id="minasError"></span>
+                    <label for="minas">Número de minas: </label>
+                    <input type="number" name="minas" id="minas" min="1" max="267" step="1" placeholder="5">
+                </p>
+            </fieldset>
+            <section class="botonera">
+                <button type="button" class="jugar" onclick="validar">Jugar</button>
+                <button type="reset" class="limpiar">Limpiar</button>
+            </section>
+        </form>
+        <section id="juego" class="juego esconder">
+            <section class="info">
+                <section class="puntos"></section>
+                <button></button>
+                <section class="crono"></section>
+            </section>
+            <section class="buscaminas"></section>
+            <button onclick="volver">Volver</button>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Autor: Guillermo Martín Chippirraz <br> Versión: 1.0.0
+        </p>
+    </footer>
+
+    <script>
+        let mensajeValidacion = "";
+
+        function validar() {
+            let tamaño = document.getElementById("tamaño").value;
+            let minas = document.getElementById("minas").value;
+            mensajeValidacion = validarFormulario(tamaño, minas);
+            if (mensajeValidacion.includes("tamaño")) {
+                document.getElementById("tamañoError").innerText = mensajeValidacion;
+            } else if (mensajeValidacion.includes("minas")) {
+                document.getElementById("minasError").innerText = mensajeValidacion;
+            } else if (mensajeValidacion === "") {
+                document.getElementById("form").className = "form esconder";
+                document.getElementById("juego").className = "juego ver";
+            }
+        }
+
+
+        function volver() {
+            let confirmacion = confirm("Atención: ¿Si continúa, el juego se reiniciará, seguro que desea volver?")
+            if (confirmacion) {
+                document.getElementById("juego").className = "juego esconder";
+                document.getElementById("form").className = "form ver";
+            }
+        }
+    </script>
+</body>
+
+</html>
