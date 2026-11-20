@@ -1,3 +1,12 @@
+<!--
+  Documento HTML principal del juego Buscaminas.
+  Estructura la aplicación en tres bloques principales (cabecera, área de juego
+  y pie de página), gestionando tanto el formulario inicial de configuración
+  como la vista dinámica de la partida en curso.
+
+  @author Guillermo Martín Chippirraz
+  @version 1.0.0
+-->
 <!DOCTYPE html>
 <html lang="es-es">
 
@@ -5,74 +14,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscaminas</title>
+
+    <!-- Hoja de estilos principal e icono de pestaña (favicon) -->
     <link rel="stylesheet" href="./css/Proyecto01EVA1.css">
     <link rel="icon" href="./resources/icons/mina.png">
+
+    <!-- Carga de tipografías externas de Google Fonts (estilo retro y marcadores digitales) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Script externo con la lógica completa del motor del juego -->
     <script src="./js/Proyecto01EVA1.js"></script>
+
+    <!-- Cabecera principal de la aplicación -->
     <header>
         <h1>Buscaminas</h1>
     </header>
+
+    <!-- Contenedor central que aloja las vistas intercambiables (formulario y tablero) -->
     <main>
+        <!-- Vista 1: Formulario de selección de parámetros iniciales -->
         <form action="/" id="form" class="form ver">
             <fieldset>
                 <legend>Selecciona el tamaño y las minas</legend>
                 <p>
                     <span id="tamañoError"></span>
                     <label for="tamaño">Tamaño (nxn): </label>
-                    <input type="number" name="tamaño" id="tamaño" min="2" max="20" step="1" placeholder="5">
+                    <input type="number" class="tamaño" name="tamaño" id="tamaño" min="2" max="20" step="1" placeholder="5">
                 </p>
                 <p>
                     <span id="minasError"></span>
                     <label for="minas">Número de minas: </label>
-                    <input type="number" name="minas" id="minas" min="1" max="267" step="1" placeholder="5">
+                    <input type="number" class="minas" name="minas" id="minas" min="1" max="267" step="1" placeholder="5">
                 </p>
             </fieldset>
+
+            <!-- Botones de inicio de partida y limpieza del formulario -->
             <section class="botonera">
-                <button type="button" class="jugar" onclick="validar">Jugar</button>
+                <button type="button" class="jugar" onclick="validar()">Jugar</button>
                 <button type="reset" class="limpiar">Limpiar</button>
             </section>
         </form>
+
+        <!-- Vista 2: Interfaz de partida activa (oculta inicialmente) -->
         <section id="juego" class="juego esconder">
+            <!-- Barra superior de estado: contador de minas, reinicio y cronómetro -->
             <section class="info">
-                <section class="puntos"></section>
-                <button></button>
-                <section class="crono"></section>
+                <section id="contadorMinas" class="puntos"></section>
+                <button type="button" class="reset" onclick="inicioPartida('cronometro', 'contadorMinas', 'buscaminas')">
+                    <img src="./resources/icons/flecha-circular-apuntando-a-la-derecha.png" alt="Reiniciar">
+                </button>
+                <section class="crono" id="cronometro">000</section>
             </section>
-            <section class="buscaminas"></section>
-            <button onclick="volver">Volver</button>
+
+            <!-- Contenedor donde se genera dinámicamente la cuadrícula N x N -->
+            <section id="buscaminas" class="buscaminas"></section>
+
+            <!-- Botón para regresar al menú de configuración -->
+            <button type="button" class="volver" onclick="volver()">Volver</button>
         </section>
     </main>
+
+    <!-- Pie de página con datos de autoría y versión -->
     <footer>
         <p>
             Autor: Guillermo Martín Chippirraz <br> Versión: 1.0.0
         </p>
     </footer>
 
+    <!-- Controlador local de validación del formulario y transición entre vistas -->
     <script>
         let mensajeValidacion = "";
 
+        /**
+         * Recoge los valores de los campos numéricos, invoca su validación
+         * y muestra los errores correspondientes o inicia la partida con transición visual.
+         */
         function validar() {
-            let tamaño = document.getElementById("tamaño").value;
-            let minas = document.getElementById("minas").value;
+            // Reinicia los mensajes de error previos antes de cada comprobación
+            document.getElementById("tamañoError").innerText = "";
+            document.getElementById("minasError").innerText = "";
+
+            let valorTamaño = document.getElementById("tamaño").value;
+            let valorMinas = document.getElementById("minas").value;
+
+            let tamaño = valorTamaño === "" ? NaN : Number.parseInt(valorTamaño);
+            let minas = valorMinas === "" ? NaN : Number.parseInt(valorMinas);
+
             mensajeValidacion = validarFormulario(tamaño, minas);
+
             if (mensajeValidacion.includes("tamaño")) {
                 document.getElementById("tamañoError").innerText = mensajeValidacion;
             } else if (mensajeValidacion.includes("minas")) {
                 document.getElementById("minasError").innerText = mensajeValidacion;
             } else if (mensajeValidacion === "") {
+                inicioPartida("cronometro", "contadorMinas", "buscaminas");
                 document.getElementById("form").className = "form esconder";
                 document.getElementById("juego").className = "juego ver";
-            }
-        }
-
-
-        function volver() {
-            let confirmacion = confirm("Atención: ¿Si continúa, el juego se reiniciará, seguro que desea volver?")
-            if (confirmacion) {
-                document.getElementById("juego").className = "juego esconder";
-                document.getElementById("form").className = "form ver";
             }
         }
     </script>

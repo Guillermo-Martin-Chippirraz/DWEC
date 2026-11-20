@@ -1,8 +1,29 @@
+/**
+ * Hoja de estilos principal del juego Buscaminas.
+ * Define la paleta de colores temática, la estructura general de la interfaz,
+ * las transiciones animadas entre el formulario de configuración y el tablero,
+ * y el escalado dinámico de la cuadrícula de juego mediante CSS Grid y variables.
+ *
+ * @author Guillermo Martín Chippirraz
+ * @version 1.0.0
+ */
+
+
+/* ==========================================================================
+   1. RESET GLOBAL Y VARIABLES DE DISEÑO
+   ========================================================================== */
+
+
+/* Reinicio de márgenes, rellenos y modelo de caja en todos los elementos */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+
+/* Tokens de color, tipografía y radios de borde reutilizables en toda la interfaz */
 
 :root {
     --color-fondo: #0F172A;
@@ -11,6 +32,7 @@
     --color-principal: #06B6D4;
     --color-secundario: #22C55E;
     --color-mina: #EF4444;
+    /* Colores clásicos del Buscaminas según el número de minas adyacentes */
     --color-uno: #2563EB;
     --color-dos: #16A34A;
     --color-tres: #DC2626;
@@ -25,56 +47,148 @@
     --border-radius-little: 16px;
 }
 
+
+/* ==========================================================================
+   2. ESTRUCTURA PRINCIPAL (HEADER, MAIN Y FOOTER)
+   ========================================================================== */
+
+
+/* Cabecera superior con título de estética retro */
+
 header {
+    height: 15.674vh;
     background-color: var(--color-fondo-secundario);
     color: var(--color-texto);
     text-align: center;
-    font-size: 50px;
+    padding-top: 5px;
+    font-size: 46px;
+    font-family: 'Press Start 2P', 'Inter', serif;
 }
 
+
+/* Contenedor principal con posicionamiento relativo para albergar las vistas animadas */
+
 main {
-    padding: 11.714vh 36.901vw;
+    height: 68.652vh;
+    width: 100%;
+    position: relative;
     background-color: var(--color-fondo);
     color: var(--color-texto);
     font-size: 20px;
+    overflow: hidden;
+    /* Evita barras de desplazamiento durante las transiciones laterales */
 }
+
+
+/* Pie de página con información de autoría y versión */
+
+footer {
+    height: 15.674vh;
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto);
+    text-align: left;
+    font-size: 20px;
+    line-height: 105%;
+    font-family: 'Press Start 2P', 'Inter', serif;
+}
+
+
+/* ==========================================================================
+   3. FORMULARIO DE CONFIGURACIÓN INICIAL
+   ========================================================================== */
+
+
+/* Tarjeta flotante centrada que permite elegir el tamaño (N) y el número de minas */
 
 .form {
     background-color: var(--color-fondo-secundario);
+    font-family: 'Inter', sans-serif;
+    top: 50%;
+    left: 50%;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    padding: 3.071vh 5.357vw;
+    align-items: center;
+    justify-content: center;
     gap: 7.286vh;
     width: 33.675vw;
     height: 41.857vh;
     border: none;
     border-radius: var(--border-radius-big);
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    /* Estado visible en el centro de la pantalla */
     &.ver {
-        transition: transform 1s ease-in;
+        transform: translate(-50%, -50%);
+        opacity: 100%;
+        pointer-events: auto;
     }
+    /* Estado oculto desplazado hacia la izquierda fuera del viewport */
     &.esconder {
-        transform: translateX(-100vw);
+        transform: translate(calc(-50% - 100vw), -50%);
+        opacity: 0%;
+        pointer-events: none;
     }
-    & input {
-        background-color: var(--color-fondo);
+    /* Agrupación de los campos de entrada */
+    & fieldset {
+        width: 83.696%;
+        height: 55.29%;
         border: none;
-        border-radius: 10px;
-        width: 12.152vw;
-        height: 2.857vw;
-        &:focus {
-            border: 2px solid var(--color-principal);
-        }
-        &:invalid {
-            background-color: var(--color-mina);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24.074%;
+        & p {
+            height: 12.457%;
+            width: 100%;
+            display: inline-block;
+            padding: 0 0 0 2.5%;
+            /* Mensajes de validación en tiempo real */
+            & span {
+                color: red;
+                font-size: 10px;
+            }
+            /* Campos numéricos de configuración */
+            & input {
+                background-color: var(--color-fondo);
+                border: none;
+                border-radius: 10px;
+                width: 43.117%;
+                height: 2.857vh;
+                font-size: 15px;
+                padding: 0 2.5%;
+                color: var(--color-texto);
+                &.tamaño {
+                    margin-left: 20.117%;
+                }
+                &.minas {
+                    margin-left: 11%;
+                }
+                &:focus {
+                    border: 2px solid var(--color-principal);
+                }
+                &:invalid {
+                    background-color: var(--color-mina);
+                }
+            }
         }
     }
 }
+
+
+/* ==========================================================================
+   4. BOTONES DE ACCIÓN
+   ========================================================================== */
+
+
+/* Estilo base y efectos hover de los botones principales */
 
 button {
     width: 10.329vw;
     height: 5.286vh;
     border: none;
     border-radius: var(--border-radius-little);
+    font-family: 'Press Start 2P', 'Inter', serif;
     &.jugar {
         background-color: var(--color-secundario);
         &:hover {
@@ -101,15 +215,143 @@ button {
     }
 }
 
+
+/* ==========================================================================
+   5. SECCIÓN DE JUEGO, MARCADORES Y TABLERO DINÁMICO
+   ========================================================================== */
+
+
+/* Contenedor principal de la partida activa */
+
 .juego {
-    overflow: hidden;
+    height: 59.561vh;
+    width: 33.675vw;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    background-color: var(--color-fondo-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4.079%;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    /* Estado visible en el centro */
+    &.ver {
+        transform: translate(-50%, -50%);
+        opacity: 100%;
+        pointer-events: auto;
+    }
+    /* Estado oculto desplazado hacia la derecha fuera del viewport */
+    &.esconder {
+        transform: translate(calc(-50% + 100vw), -50%);
+        opacity: 0%;
+        pointer-events: none;
+    }
+    /* Panel superior de marcadores (minas restantes, botón de reinicio y cronómetro) */
+    .info {
+        width: 52.174%;
+        height: 7.8955%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 4.167%;
+        .puntos,
+        .crono {
+            width: 39.583%;
+            height: 100%;
+            background-color: black;
+            color: red;
+            text-align: right;
+            font-family: 'Bitcount Single', 'Inter', sans-serif;
+        }
+        .reset {
+            width: 12.5%;
+            height: 100%;
+            background-color: var(--color-casilla-descubierta);
+            border: 2px solid var(--color-fondo);
+            box-shadow: inset 3px gray;
+            border-radius: 0;
+        }
+    }
+    /* Cuadrícula del tablero escalable dinámicamente mediante la variable --n */
+    .buscaminas {
+        height: 68.421%;
+        width: 56.522%;
+        background-color: var(--color-fondo);
+        margin: 0 auto;
+        border-radius: var(--border-radius-little);
+        padding: 8px;
+        --n: 5;
+        /* Sobrescrito desde JS según el tamaño N elegido */
+        display: grid;
+        grid-template-columns: repeat(var(--n), 1fr);
+        grid-template-rows: repeat(var(--n), 1fr);
+        gap: 2px;
+        container-type: size;
+        /* Habilita unidades cqw para escalar la tipografía de las celdas */
+    }
 }
 
-footer {
-    height: 14.286vh;
+
+/* ==========================================================================
+   6. CASILLAS DEL TABLERO Y ESTADOS VISUALES
+   ========================================================================== */
+
+
+/* Estilo base, estados de interacción y colores numéricos de cada celda */
+
+.celda {
+    width: 100%;
+    height: 100%;
     background-color: var(--color-fondo-secundario);
-    color: var(--color-texto);
-    text-align: left;
-    font-size: 20px;
-    line-height: 105%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: calc(60cqw / var(--n));
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease;
+    font-family: 'Press Start 2P', 'Inter', serif;
+    &:hover:not(.descubierta) {
+        background-color: var(--color-fondo);
+    }
+    &.descubierta {
+        background-color: var(--color-casilla-descubierta);
+        cursor: default;
+    }
+    /* Iconos PNG de mina y banderín centrados dentro de la casilla */
+    & img {
+        width: 70%;
+        height: 70%;
+        object-fit: contain;
+        pointer-events: none;
+    }
+    /* Asignación de color según la cantidad de minas adyacentes */
+    &.num-1 {
+        color: var(--color-uno);
+    }
+    &.num-2 {
+        color: var(--color-dos);
+    }
+    &.num-3 {
+        color: var(--color-tres);
+    }
+    &.num-4 {
+        color: var(--color-cuatro);
+    }
+    &.num-5 {
+        color: var(--color-cinco);
+    }
+    &.num-6 {
+        color: var(--color-seis);
+    }
+    &.num-7 {
+        color: var(--color-siete);
+    }
+    &.num-8 {
+        color: var(--color-ocho);
+    }
 }
