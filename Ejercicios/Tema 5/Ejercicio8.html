@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <script>
+        const conjuntoA = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        const conjuntoB = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23]);
+
+        function interseccionConjuntos(set1, set2) {
+            if (set1 instanceof Set && set2 instanceof Set) {
+                const arr1 = [...set1];
+                const arr2 = [...set2];
+                const arrayResultado = arr1.filter((a) => arr2.includes(a));
+
+                return new Set(arrayResultado);
+            }
+        }
+
+        console.log(interseccionConjuntos(conjuntoA, conjuntoB));
+    </script>
+</body>
+
+</html>

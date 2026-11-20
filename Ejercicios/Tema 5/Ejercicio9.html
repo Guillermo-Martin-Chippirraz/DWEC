@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es-es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+    <script>
+        const dniMap = new Map();
+        dniMap.set("45150094J", "Guillermo").set("12345678Z", "Falso").set("00000001R", "Montgomery Burns").set("00000000T", "Jordi Hurtado");
+
+        for ([dni, nombre] of dniMap) {
+            console.log(`DNI: ${dni}, nombre: ${nombre}`);
+        }
+
+        let dniUsuario = prompt("Por favor, introduzca un DNI.");
+
+        if (dniMap.has(dniUsuario)) {
+            confirm(`Este DNI pertenece a ${dniMap.get(dniUsuario)}.`);
+        }
+
+        for (nombre of dniMap.values()) {
+            console.log(nombre);
+        }
+    </script>
+</body>
+
+</html>
