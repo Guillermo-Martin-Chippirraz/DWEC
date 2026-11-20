@@ -53,9 +53,13 @@
         let id;
 
         function muestraJson() {
-            let arrayPersonajes = cadenaJSON.personajes;
-            id = setInterval((arrayPersonajes, i) => {
-                document.getElementById("personaje").innerText = formato(arrayPersonajes[i])
+            let arrayPersonajes = JSON.parse(cadenaJSON).personajes;
+            let i = 0;
+            id = setInterval(() => {
+                document.getElementById("personaje").innerText = formato(arrayPersonajes[i]);
+                if (i < arrayPersonajes.length - 1)
+                    i++;
+                else i = 0;
             }, 2000);
         }
 
